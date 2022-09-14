@@ -1,7 +1,9 @@
 # react-grid-rearrange
 
 <div align="center">
-![quote application example](https://s4.gifyu.com/images/ezgif.com-gif-maker372d99bc24ebb931.gif)
+
+![application example](https://s4.gifyu.com/images/ezgif.com-gif-maker372d99bc24ebb931.gif)
+
 </div>
 
 ## Install
