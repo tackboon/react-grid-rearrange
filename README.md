@@ -19,7 +19,7 @@ yarn add @tackboon/react-grid-rearrange
 ## Usage
 
 ```jsx
-import { GridContainer, BlockWrapper } from "../dist";
+import { GridContainer, BlockWrapper } from "@tackboon/react-grid-rearrange";
 
 const App = () => {
   return (
