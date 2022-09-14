@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Rearrange grid items via drag and drop",
   "license": "MIT",
   "main": "dist/index.js",
@@ -36,6 +36,10 @@
   },
   "name": "@tackboon/react-grid-rearrange",
   "author": "tackboon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tackboon/react-grid-rearrange"
+  },
   "module": "dist/react-grid-rearrange.esm.js",
   "size-limit": [
     {
