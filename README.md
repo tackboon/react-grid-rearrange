@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![application example](https://s4.gifyu.com/images/ezgif.com-gif-maker372d99bc24ebb931.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/41811845/190167524-0503d0b1-5fcf-4731-93ab-2dcaa701ecfc.gif)
 
 </div>
 
