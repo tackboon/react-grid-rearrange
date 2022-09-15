@@ -80,6 +80,11 @@ export type SetDisableDragOnTouchScreen = ActionWithPayload<
   boolean
 >;
 
+export type SetIsClick = ActionWithPayload<
+  GRID_ACTION_TYPES.SET_IS_CLICK,
+  boolean
+>;
+
 export const setItemHeight = withMatcher(
   (height: number): SetItemHeight =>
     createAction(GRID_ACTION_TYPES.SET_ITEM_HEIGHT, height)
@@ -153,4 +158,9 @@ export const setAccumulateScrollMovement = withMatcher(
 export const setDisableDragOnTouchScreen = withMatcher(
   (status: boolean): SetDisableDragOnTouchScreen =>
     createAction(GRID_ACTION_TYPES.SET_DISABLE_DRAG_ON_TOUCH_SCREEN, status)
+);
+
+export const setIsClick = withMatcher(
+  (status: boolean): SetIsClick =>
+    createAction(GRID_ACTION_TYPES.SET_IS_CLICK, status)
 );

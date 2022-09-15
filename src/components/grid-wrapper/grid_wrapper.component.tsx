@@ -32,6 +32,7 @@ export type GridCallbackProps = {
   isDragging: boolean;
   order: number[];
   lastMovingIndex: number;
+  isClick: boolean;
 };
 
 export type GridWrapperType = {
@@ -43,7 +44,12 @@ export type GridWrapperType = {
   scrollElementID?: string;
   disableDragOnTouchDevice?: boolean;
   children: (styles: GridAnimationStyle[]) => JSX.Element[];
-  cb?: ({ isDragging, order, lastMovingIndex }: GridCallbackProps) => void;
+  cb?: ({
+    isDragging,
+    order,
+    lastMovingIndex,
+    isClick,
+  }: GridCallbackProps) => void;
 };
 
 const GridWrapper: React.FC<GridWrapperType> = ({
@@ -64,6 +70,7 @@ const GridWrapper: React.FC<GridWrapperType> = ({
       movingCoordinate,
       movingIndex,
       lastMovingIndex,
+      isClick,
     },
     dispatch,
     gridRef,
@@ -94,9 +101,9 @@ const GridWrapper: React.FC<GridWrapperType> = ({
 
   React.useEffect(() => {
     if (cb) {
-      cb({ isDragging: movingIndex !== -1, order, lastMovingIndex });
+      cb({ isDragging: movingIndex !== -1, order, lastMovingIndex, isClick });
     }
-  }, [movingIndex, order, lastMovingIndex, cb]);
+  }, [movingIndex, order, lastMovingIndex, isClick, cb]);
 
   return <Wrapper ref={gridRef}>{children(springs)}</Wrapper>;
 };

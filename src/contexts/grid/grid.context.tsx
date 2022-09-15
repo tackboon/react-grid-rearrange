@@ -17,6 +17,7 @@ export const defaultGridState = {
   scrollMovement: { x: 0, y: 0 },
   accumulateScrollMovement: { x: 0, y: 0 },
   disableDragOnTouchScreen: true,
+  isClick: false,
 };
 
 const gridRef = React.createRef<HTMLDivElement>();

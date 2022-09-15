@@ -1,5 +1,7 @@
 # react-grid-rearrange
 
+Rearrange / reorder grid items via drag and drop in react.
+
 <div align="center">
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/41811845/190167524-0503d0b1-5fcf-4731-93ab-2dcaa701ecfc.gif)

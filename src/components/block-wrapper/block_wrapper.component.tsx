@@ -6,6 +6,7 @@ import styled from "styled-components";
 import {
   setAccumulateScrollMovement,
   setInitialCoordinate,
+  setIsClick,
   setLastMovingIndex,
   setMovingCoordinate,
   setMovingIndex,
@@ -88,11 +89,17 @@ const BlockWrapper: React.FC<BlockWrapperType> = ({
         }
       }
     },
-    onDragEnd: () => {
+    onDragEnd: ({ movement: [mx, my] }) => {
       dispatch(setMovingIndex(-1));
       dispatch(setAccumulateScrollMovement({ x: 0, y: 0 }));
       dispatch(setScrollMovement({ x: 0, y: 0 }));
       dispatch(setLastMovingIndex(index));
+
+      if (mx === 0 && my === 0) {
+        dispatch(setIsClick(true));
+      } else {
+        dispatch(setIsClick(false));
+      }
     },
   });
 

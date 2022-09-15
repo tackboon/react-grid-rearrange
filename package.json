@@ -1,6 +1,6 @@
 {
-  "version": "0.1.1",
-  "description": "Rearrange grid items via drag and drop",
+  "version": "0.2.0",
+  "description": "Rearrange / reorder grid items via drag and drop",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

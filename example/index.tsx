@@ -29,7 +29,11 @@ const App = () => {
     isDragging,
     order,
     lastMovingIndex,
+    isClick,
   }: GridCallbackProps) => {
+    if (isClick && !isDragging) {
+      console.log("clicked item " + lastMovingIndex);
+    }
     if (lastMovingIndex !== -1 && !isDragging) {
       const newOrder = order.map(o => products.current[o]);
       console.log(newOrder);

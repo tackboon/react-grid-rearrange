@@ -4,6 +4,7 @@ import {
   setColSize,
   setDisableDragOnTouchScreen,
   setInitialCoordinate,
+  setIsClick,
   setItemHeight,
   setItemOrder,
   setItemsCoordinate,
@@ -33,6 +34,7 @@ export type GridState = {
   readonly scrollMovement: ScrollMovement;
   readonly accumulateScrollMovement: ScrollMovement;
   readonly disableDragOnTouchScreen: boolean;
+  readonly isClick: boolean;
 };
 
 export const gridReducer = (state: GridState, action: any): GridState => {
@@ -138,6 +140,13 @@ export const gridReducer = (state: GridState, action: any): GridState => {
     return {
       ...state,
       disableDragOnTouchScreen: action.payload,
+    };
+  }
+
+  if (setIsClick.match(action)) {
+    return {
+      ...state,
+      isClick: action.payload,
     };
   }
 
