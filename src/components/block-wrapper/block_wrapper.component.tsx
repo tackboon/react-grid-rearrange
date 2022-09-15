@@ -95,6 +95,7 @@ const BlockWrapper: React.FC<BlockWrapperType> = ({
       dispatch(setScrollMovement({ x: 0, y: 0 }));
       dispatch(setLastMovingIndex(index));
 
+      // if no movement made, return is click
       if (mx === 0 && my === 0) {
         dispatch(setIsClick(true));
       } else {
@@ -103,11 +104,18 @@ const BlockWrapper: React.FC<BlockWrapperType> = ({
     },
   });
 
+  // handle click when disable drag in touch screen device
+  let handleClick = () => {
+    dispatch(setIsClick(true));
+    dispatch(setLastMovingIndex(index));
+  };
+
   // disable drag in touch screen device
   let dragProps = {};
   const isTouchScreendevice = checkIsTouchScreendevice();
   if (!isTouchScreendevice || !disableDragOnTouchScreen) {
     dragProps = { ...bind() };
+    handleClick = () => {};
   }
 
   return (
@@ -115,6 +123,7 @@ const BlockWrapper: React.FC<BlockWrapperType> = ({
       {...dragProps}
       style={animationStyle}
       $isDraggable={!isTouchScreendevice || !disableDragOnTouchScreen}
+      onClick={handleClick}
     >
       {children}
     </Wrapper>
