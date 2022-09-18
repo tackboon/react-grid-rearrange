@@ -75,8 +75,8 @@ export type SetAccumulateScrollMovement = ActionWithPayload<
   ScrollMovement
 >;
 
-export type SetDisableDragOnTouchScreen = ActionWithPayload<
-  GRID_ACTION_TYPES.SET_DISABLE_DRAG_ON_TOUCH_SCREEN,
+export type SetDisableDrag = ActionWithPayload<
+  GRID_ACTION_TYPES.SET_DISABLE_DRAG,
   boolean
 >;
 
@@ -155,9 +155,9 @@ export const setAccumulateScrollMovement = withMatcher(
     createAction(GRID_ACTION_TYPES.SET_ACCUMULATE_SCROLL_MOVEMENT, scroll)
 );
 
-export const setDisableDragOnTouchScreen = withMatcher(
-  (status: boolean): SetDisableDragOnTouchScreen =>
-    createAction(GRID_ACTION_TYPES.SET_DISABLE_DRAG_ON_TOUCH_SCREEN, status)
+export const setDisableDrag = withMatcher(
+  (status: boolean): SetDisableDrag =>
+    createAction(GRID_ACTION_TYPES.SET_DISABLE_DRAG, status)
 );
 
 export const setIsClick = withMatcher(

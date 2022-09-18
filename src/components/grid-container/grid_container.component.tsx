@@ -17,7 +17,7 @@ const GridContainer: React.FC<GridWrapperType> = ({
   rowGap,
   colGap,
   scrollElementID,
-  disableDragOnTouchDevice,
+  disableDrag,
   cb,
   children,
 }) => (
@@ -30,7 +30,7 @@ const GridContainer: React.FC<GridWrapperType> = ({
         rowGap={rowGap}
         colGap={colGap}
         scrollElementID={scrollElementID}
-        disableDragOnTouchDevice={disableDragOnTouchDevice}
+        disableDrag={disableDrag}
         cb={cb}
         children={children}
       />

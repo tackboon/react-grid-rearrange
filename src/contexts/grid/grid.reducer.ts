@@ -2,7 +2,7 @@ import {
   setAccumulateScrollMovement,
   setColGap,
   setColSize,
-  setDisableDragOnTouchScreen,
+  setDisableDrag,
   setInitialCoordinate,
   setIsClick,
   setItemHeight,
@@ -33,7 +33,7 @@ export type GridState = {
   readonly lastMovingIndex: number;
   readonly scrollMovement: ScrollMovement;
   readonly accumulateScrollMovement: ScrollMovement;
-  readonly disableDragOnTouchScreen: boolean;
+  readonly disableDrag: boolean;
   readonly isClick: boolean;
 };
 
@@ -136,10 +136,10 @@ export const gridReducer = (state: GridState, action: any): GridState => {
     };
   }
 
-  if (setDisableDragOnTouchScreen.match(action)) {
+  if (setDisableDrag.match(action)) {
     return {
       ...state,
-      disableDragOnTouchScreen: action.payload,
+      disableDrag: action.payload,
     };
   }
 

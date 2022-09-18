@@ -14,7 +14,6 @@ import {
 } from "../../contexts/grid/grid.action";
 import { useGridContext } from "../../contexts/grid/grid.context";
 import { checkIsInsideGrid } from "../../utils/coordination/coordination.util";
-import { checkIsTouchScreendevice } from "../../utils/device/check_device.util";
 import { GridAnimationStyle } from "../grid-wrapper/grid_wrapper.component";
 
 const Wrapper = styled(animated.div)`
@@ -43,7 +42,7 @@ const BlockWrapper: React.FC<BlockWrapperType> = ({
       initialCoordinate,
       scrollMovement,
       accumulateScrollMovement,
-      disableDragOnTouchScreen,
+      disableDrag,
     },
     dispatch,
     gridRef,
@@ -112,8 +111,7 @@ const BlockWrapper: React.FC<BlockWrapperType> = ({
 
   // disable drag in touch screen device
   let dragProps = {};
-  const isTouchScreendevice = checkIsTouchScreendevice();
-  if (!isTouchScreendevice || !disableDragOnTouchScreen) {
+  if (!disableDrag) {
     dragProps = { ...bind() };
     handleClick = () => {};
   }
@@ -122,7 +120,7 @@ const BlockWrapper: React.FC<BlockWrapperType> = ({
     <Wrapper
       {...dragProps}
       style={animationStyle}
-      $isDraggable={!isTouchScreendevice || !disableDragOnTouchScreen}
+      $isDraggable={!disableDrag}
       onClick={handleClick}
     >
       {children}

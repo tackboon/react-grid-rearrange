@@ -59,7 +59,7 @@ const App = () => {
 | itemWidth                | Number       | Define block item width                                                            | true     |
 | rowGap                   | Number       | Define row gap distance in pixel                                                   | false    |
 | colGap                   | Number       | Define column gap distance in pixel                                                | false    |
-| disableDragOnTouchDevice | Boolean      | Disable drag feature in touch device (default true)                                | false    |
+| disableDrag              | Boolean      | Disable drag feature (default false)                                               | false    |
 | scrollElementID          | string       | Specify container ID to scroll (default window)                                    | false    |
 | cb                       | Function     | Return callback on actions                                                         | false    | 
 

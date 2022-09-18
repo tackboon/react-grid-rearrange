@@ -2,6 +2,7 @@ import "react-app-polyfill/ie11";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { GridCallbackProps, GridContainer, BlockWrapper } from "../dist";
+import "./index.css";
 
 const getColor = (i: number) => {
   const colors = [
@@ -15,7 +16,8 @@ const getColor = (i: number) => {
 };
 
 const App = () => {
-  const products = React.useRef(
+  const [toggleDrag, setToggleDrag] = React.useState(true);
+  const [products, setProducts] = React.useState(
     "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"
       .split(",")
       .map(product => ({
@@ -24,7 +26,7 @@ const App = () => {
       }))
   );
 
-  const bgColors = products.current.map((_, i) => getColor(i));
+  const bgColors = products.map((_, i) => getColor(i));
   const callback = ({
     isDragging,
     order,
@@ -35,21 +37,40 @@ const App = () => {
       console.log("clicked item " + lastMovingIndex);
     }
     if (lastMovingIndex !== -1 && !isDragging) {
-      const newOrder = order.map(o => products.current[o]);
+      const newOrder = order.map(o => products[o]);
       console.log(newOrder);
     }
   };
 
+  const handleAddItem = React.useCallback(() => {
+    setProducts(prev => [
+      ...prev,
+      {
+        id: `${prev.length}`,
+        value: `${prev.length}`,
+      },
+    ]);
+  }, []);
+
   return (
     <div className="App">
-      <div id="test-wrapper" className="test-wrapper">
+      <button className="toggle" onClick={() => setToggleDrag(prev => !prev)}>
+        togggle drag
+      </button>
+      <button className="add" onClick={handleAddItem}>
+        add item
+      </button>
+      <p>drag status: {toggleDrag.toString()}</p>
+
+      <div className="test-wrapper">
         <GridContainer
-          totalItem={products.current.length}
+          totalItem={products.length}
           itemHeight={100}
           itemWidth={100}
           colGap={10}
           rowGap={20}
           cb={callback}
+          disableDrag={!toggleDrag}
         >
           {styles =>
             styles.map((style, i) => {
@@ -65,7 +86,7 @@ const App = () => {
                       alignItems: "center",
                     }}
                   >
-                    {products.current[i].value}
+                    {products[i].value}
                   </div>
                 </BlockWrapper>
               );

@@ -5,10 +5,7 @@ import styled from "styled-components";
 import { useGridContext } from "../../contexts/grid/grid.context";
 import { animateFn } from "../../utils/animation/animation.util";
 import { initOrder } from "../../utils/order/init_order.util";
-import {
-  setDisableDragOnTouchScreen,
-  setItemOrder,
-} from "../../contexts/grid/grid.action";
+import { setDisableDrag, setItemOrder } from "../../contexts/grid/grid.action";
 import useSetGridSize from "../../hooks/useSetGridSize";
 import useSetItemsCoordinate from "../../hooks/useSetItemsCoordinate";
 import useSetItemSize from "../../hooks/useSetItemSize";
@@ -42,7 +39,7 @@ export type GridWrapperType = {
   rowGap?: number;
   colGap?: number;
   scrollElementID?: string;
-  disableDragOnTouchDevice?: boolean;
+  disableDrag?: boolean;
   children: (styles: GridAnimationStyle[]) => JSX.Element[];
   cb?: ({
     isDragging,
@@ -59,7 +56,7 @@ const GridWrapper: React.FC<GridWrapperType> = ({
   rowGap = 0,
   colGap = 0,
   scrollElementID = "",
-  disableDragOnTouchDevice = true,
+  disableDrag = false,
   cb,
   children,
 }) => {
@@ -77,8 +74,8 @@ const GridWrapper: React.FC<GridWrapperType> = ({
   } = useGridContext();
 
   React.useEffect(() => {
-    dispatch(setDisableDragOnTouchScreen(disableDragOnTouchDevice));
-  }, [dispatch, disableDragOnTouchDevice]);
+    dispatch(setDisableDrag(disableDrag));
+  }, [dispatch, disableDrag]);
 
   // // create initial order
   React.useEffect(() => {
