@@ -16,7 +16,7 @@ export const defaultGridState = {
   lastMovingIndex: -1,
   scrollMovement: { x: 0, y: 0 },
   accumulateScrollMovement: { x: 0, y: 0 },
-  disableDragOnTouchScreen: true,
+  disableDrag: true,
   isClick: false,
 };
 
