@@ -100,7 +100,10 @@ const GridWrapper: React.FC<GridWrapperType> = ({
     if (cb) {
       cb({ isDragging: movingIndex !== -1, order, lastMovingIndex, isClick });
     }
-  }, [movingIndex, order, lastMovingIndex, isClick, cb]);
+
+    // order is not in the condition to reduce unnecessary render
+    // we only take final order in this callback
+  }, [movingIndex, lastMovingIndex, isClick, cb]);
 
   return <Wrapper ref={gridRef}>{children(springs)}</Wrapper>;
 };
