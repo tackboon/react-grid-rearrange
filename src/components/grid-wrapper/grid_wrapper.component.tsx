@@ -5,7 +5,11 @@ import styled from "styled-components";
 import { useGridContext } from "../../contexts/grid/grid.context";
 import { animateFn } from "../../utils/animation/animation.util";
 import { initOrder } from "../../utils/order/init_order.util";
-import { setDisableDrag, setItemOrder } from "../../contexts/grid/grid.action";
+import {
+  setDisableDrag,
+  setIsClick,
+  setItemOrder,
+} from "../../contexts/grid/grid.action";
 import useSetGridSize from "../../hooks/useSetGridSize";
 import useSetItemsCoordinate from "../../hooks/useSetItemsCoordinate";
 import useSetItemSize from "../../hooks/useSetItemSize";
@@ -77,10 +81,11 @@ const GridWrapper: React.FC<GridWrapperType> = ({
     dispatch(setDisableDrag(disableDrag));
   }, [dispatch, disableDrag]);
 
-  // // create initial order
+  // create initial order
   React.useEffect(() => {
     const itemsOrder = initOrder(totalItem);
     dispatch(setItemOrder(itemsOrder));
+    dispatch(setIsClick(false));
   }, [dispatch, totalItem]);
 
   useSetItemSize(itemHeight, itemWidth, rowGap, colGap);
