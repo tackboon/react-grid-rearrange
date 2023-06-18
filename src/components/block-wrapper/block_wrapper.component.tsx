@@ -7,6 +7,7 @@ import {
   setAccumulateScrollMovement,
   setInitialCoordinate,
   setIsClick,
+  setIsImmediateAnimate,
   setLastMovingIndex,
   setMovingCoordinate,
   setMovingIndex,
@@ -57,6 +58,7 @@ const BlockWrapper: React.FC<BlockWrapperType> = ({
         itemIndex !== -1 &&
         itemsCoordinate[itemIndex]
       ) {
+        dispatch(setIsImmediateAnimate(false));
         dispatch(setInitialCoordinate(itemsCoordinate[itemIndex]));
         dispatch(setMovingCoordinate(itemsCoordinate[itemIndex]));
         dispatch(setMovingIndex(index));

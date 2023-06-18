@@ -8,6 +8,7 @@ import { initOrder } from "../../utils/order/init_order.util";
 import {
   setDisableDrag,
   setIsClick,
+  setIsImmediateAnimate,
   setItemOrder,
 } from "../../contexts/grid/grid.action";
 import useSetGridSize from "../../hooks/useSetGridSize";
@@ -44,6 +45,7 @@ export type GridWrapperType = {
   colGap?: number;
   scrollElementID?: string;
   disableDrag?: boolean;
+  disableInitialAnimation?: boolean;
   children: (styles: GridAnimationStyle[]) => JSX.Element[];
   cb?: ({
     isDragging,
@@ -61,6 +63,7 @@ const GridWrapper: React.FC<GridWrapperType> = ({
   colGap = 0,
   scrollElementID = "",
   disableDrag = false,
+  disableInitialAnimation = false,
   cb,
   children,
 }) => {
@@ -72,6 +75,7 @@ const GridWrapper: React.FC<GridWrapperType> = ({
       movingIndex,
       lastMovingIndex,
       isClick,
+      isImmediateAnimate,
     },
     dispatch,
     gridRef,
@@ -86,6 +90,7 @@ const GridWrapper: React.FC<GridWrapperType> = ({
     const itemsOrder = initOrder(totalItem);
     dispatch(setItemOrder(itemsOrder));
     dispatch(setIsClick(false));
+    dispatch(setIsImmediateAnimate(disableInitialAnimation));
   }, [dispatch, totalItem]);
 
   useSetItemSize(itemHeight, itemWidth, rowGap, colGap);
@@ -97,7 +102,13 @@ const GridWrapper: React.FC<GridWrapperType> = ({
 
   const [springs] = useSprings(
     totalItem,
-    animateFn(order, itemsCoordinate, movingCoordinate, movingIndex),
+    animateFn(
+      order,
+      itemsCoordinate,
+      movingCoordinate,
+      movingIndex,
+      isImmediateAnimate
+    ),
     [totalItem, order, itemsCoordinate, movingCoordinate, movingIndex]
   );
 

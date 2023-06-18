@@ -85,6 +85,11 @@ export type SetIsClick = ActionWithPayload<
   boolean
 >;
 
+export type SetIsImmediateAnimate = ActionWithPayload<
+  GRID_ACTION_TYPES.SET_IS_IMMEDIATE_ANIMATE,
+  boolean
+>;
+
 export const setItemHeight = withMatcher(
   (height: number): SetItemHeight =>
     createAction(GRID_ACTION_TYPES.SET_ITEM_HEIGHT, height)
@@ -163,4 +168,9 @@ export const setDisableDrag = withMatcher(
 export const setIsClick = withMatcher(
   (status: boolean): SetIsClick =>
     createAction(GRID_ACTION_TYPES.SET_IS_CLICK, status)
+);
+
+export const setIsImmediateAnimate = withMatcher(
+  (status: boolean): SetIsImmediateAnimate =>
+    createAction(GRID_ACTION_TYPES.SET_IS_IMMEDIATE_ANIMATE, status)
 );

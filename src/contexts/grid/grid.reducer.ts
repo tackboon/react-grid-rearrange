@@ -5,6 +5,7 @@ import {
   setDisableDrag,
   setInitialCoordinate,
   setIsClick,
+  setIsImmediateAnimate,
   setItemHeight,
   setItemOrder,
   setItemsCoordinate,
@@ -35,6 +36,7 @@ export type GridState = {
   readonly accumulateScrollMovement: ScrollMovement;
   readonly disableDrag: boolean;
   readonly isClick: boolean;
+  readonly isImmediateAnimate: boolean;
 };
 
 export const gridReducer = (state: GridState, action: any): GridState => {
@@ -147,6 +149,13 @@ export const gridReducer = (state: GridState, action: any): GridState => {
     return {
       ...state,
       isClick: action.payload,
+    };
+  }
+
+  if (setIsImmediateAnimate.match(action)) {
+    return {
+      ...state,
+      isImmediateAnimate: action.payload,
     };
   }
 

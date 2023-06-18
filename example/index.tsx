@@ -71,6 +71,7 @@ const App = () => {
           rowGap={20}
           cb={callback}
           disableDrag={!toggleDrag}
+          disableInitialAnimation={false}
         >
           {styles =>
             styles.map((style, i) => {

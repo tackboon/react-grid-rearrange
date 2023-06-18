@@ -60,6 +60,7 @@ const App = () => {
 | rowGap                   | Number       | Define row gap distance in pixel                                                   | false    |
 | colGap                   | Number       | Define column gap distance in pixel                                                | false    |
 | disableDrag              | Boolean      | Disable drag feature (default false)                                               | false    |
+disableInitAnimation              | Boolean      | Disable initial animation (default false)                                               | false    |
 | scrollElementID          | string       | Specify container ID to scroll (default window)                                    | false    |
 | cb                       | Function     | Return callback on actions                                                         | false    | 
 

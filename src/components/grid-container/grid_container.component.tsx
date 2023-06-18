@@ -18,6 +18,7 @@ const GridContainer: React.FC<GridWrapperType> = ({
   colGap,
   scrollElementID,
   disableDrag,
+  disableInitialAnimation,
   cb,
   children,
 }) => (
@@ -31,6 +32,7 @@ const GridContainer: React.FC<GridWrapperType> = ({
         colGap={colGap}
         scrollElementID={scrollElementID}
         disableDrag={disableDrag}
+        disableInitialAnimation={disableInitialAnimation}
         cb={cb}
         children={children}
       />
